@@ -1,0 +1,103 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start" *ngIf="canGoBack">
+      <ion-button (click)="goBack()">
+        <ion-icon name="arrow-back" slot="start"></ion-icon> Back
+      </ion-button>
+    </ion-buttons>
+    <ion-row>
+      <ion-col size="2" class="ion-padding-start">
+        <img src="../../../../assets/img/home_address.png">
+      </ion-col>
+      <ion-col size="6.5">
+        <ion-text color="light">
+          <span>Now</span><br>
+          <b>{{loc}}</b>
+          <ion-icon name="navigate-circle-outline" color="light"></ion-icon>
+        </ion-text>
+      </ion-col>
+      <ion-col size="3.5">
+        <ion-button fill="clear">
+          <img src="../../../../assets/img/catafindnAMELogo1.png">
+        </ion-button>
+      </ion-col>
+    </ion-row>
+    <!-- <ion-title>{{ title }}</ion-title> -->
+  </ion-toolbar>
+</ion-header>
+
+<ion-header class="ion-no-border">
+  <!-- <ion-toolbar color="light">
+    <ion-title class="ion-text-center">Activity</ion-title>
+  </ion-toolbar> -->
+  <ion-row>
+    <ion-slides [options]="slideOpts" *ngIf="slides?.length > 0">
+      <ion-slide *ngFor="let item of slides; let i = index">
+        <ion-col (click)="changeTab(i)">
+          <ion-fab vertical="top" horizontal="center" *ngIf="item?.notifications">
+            <ion-fab-button color="danger">
+              {{item?.notifications}}
+            </ion-fab-button>
+          </ion-fab>
+          <ion-button 
+            [class.active-tab]="activeTab == i"
+            [color]="activeTab == i ? 'secondary' : 'primary'"
+            expand="block" mode="ios" shape="round">
+            
+            <ion-text class="ion-text-wrap">{{item?.name}}<img style="width: 20px; height: 20px;" [src]="item?.icon" /></ion-text>
+            
+            
+          </ion-button>
+        </ion-col>
+      </ion-slide>
+    </ion-slides>
+  </ion-row>
+</ion-header>
+
+<ion-content>
+
+  <ion-list lines="none" *ngIf="activeTab == 0">
+    <ion-list-header>
+      <ion-label>
+        <strong>New (7)</strong>
+      </ion-label>
+    </ion-list-header>
+    <ion-item *ngFor="let item of activities">
+      <ion-thumbnail slot="start" class="photo">
+        <img [src]="item?.store_profile" />
+      </ion-thumbnail>
+
+      <ion-label>
+        {{item?.store}}
+        <p class="ion-text-wrap">
+          <ion-text color="medium" *ngIf="item?.activity == 'pinned'">
+            Pinned Page.
+          </ion-text>
+          <ion-text color="medium" *ngIf="item?.activity == 'notes'">
+            Note Saved.
+          </ion-text>
+          <ion-text color="medium" *ngIf="item?.activity == 'liked'">
+            <span>Liked:</span> {{item?.description}}
+          </ion-text>
+          <ion-text class="time">{{item?.time}}</ion-text>
+        </p>
+        <ion-row *ngIf="item?.activity == 'liked'">
+          <ion-icon 
+            [class.like]="item?.like"
+            (click)="likeComment(item)"
+            [color]="item?.like ? 'danger' : 'medium'" 
+            [name]="item?.like ? 'heart' : 'heart-outline'">
+          </ion-icon>
+          <ion-icon color="medium" class="ion-margin-start" name="trash-outline"></ion-icon>
+        </ion-row>
+      </ion-label>
+
+      <ion-button *ngIf="item?.activity == 'pinned'" mode="ios" slot="end" color="primary">Unpin</ion-button>
+      <ion-button *ngIf="item?.activity == 'notes'" mode="ios" slot="end" color="primary">Edit</ion-button>
+      <ion-thumbnail *ngIf="item?.activity == 'liked' || item?.activity == 'pinned' || item?.activity == 'notes'" slot="end" class="product">
+        <img [src]="item?.product" />
+      </ion-thumbnail>
+    </ion-item>
+  </ion-list>
+
+</ion-content>

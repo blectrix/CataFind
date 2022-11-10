@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/login"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Phone Auth</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-no-padding">
+  <div id="sign-in-button"></div>
+  <div class="main">
+    <ion-card style="transform: translateY(7vh)" no-margin>
+      <ion-card-content>
+        <ion-row class="row">
+          <div class="cata-logo">
+            <img src="assets/img/cataLogo.png" class="img-logo">
+          <ion-text class="ion-padding">
+            <h2 class="ion-no-margin ion-margin-vertical ion-text-center">Welcome to CataFind Phone Authorization</h2>
+          </ion-text>
+          </div>
+        </ion-row>
+        <ion-grid class="phoneAuthGrid">
+          <ion-row>
+            <!-- <ion-col size="4">
+              <ion-select class="phoneCountry" value="brown" okText="Okay" cancelText="Dismiss"
+              (ionChange)="countryCodeChange($event)" [value]="CountryCode">
+              <ion-select-option *ngFor="let country of CountryJson" value={{country.dail_code}}>
+                {{country.dial_code + ' ' + country.name}}
+              </ion-select-option>
+            </ion-select>
+            </ion-col> -->
+            <ion-col size="8">
+              <ion-input clearInput type="test" placeholder="Contact Number" [(ngModel)]="PhoneNo"
+              class="Input ion-padding-horizontal" clear-input="true"></ion-input>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-button expand="block" (click)="signinWithPhoneNumber($event)" color="undefined"
+              class="btn-transition">Sign in with Phone number</ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

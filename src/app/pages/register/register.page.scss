@@ -1,0 +1,15 @@
+ion-content {
+    --background: url('../../../assets/img/regfog.png') no-repeat center center/cover;
+}
+ion-input, ion-text {
+    font-size: 0.9rem;
+}
+.error {
+    font-size: 0.7rem !important;
+}
+p {
+    ion-icon {
+        font-size: 1.8rem;
+        margin: 1vh 1vh;
+    }
+}

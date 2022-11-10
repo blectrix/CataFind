@@ -1,0 +1,79 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start" *ngIf="canGoBack">
+      <ion-button (click)="goBack()">
+        <ion-icon name="arrow-back" slot="start"></ion-icon> Back
+      </ion-button>
+    </ion-buttons>
+    <ion-row>
+      <ion-col size="1.25">
+        <ion-button (click)="logoutToast()" fill="solid">
+          <ion-icon name="person" slot="icon-only"></ion-icon>
+        </ion-button>
+      </ion-col>
+      <ion-col size="2" class="ion-padding-start">
+        <img src="../../../../assets/img/home_address.png">
+      </ion-col>
+      <ion-col size="5.25">
+        <ion-text color="light">
+          <span>Now</span><br>
+          <b>{{loc}}</b>
+          <ion-icon name="navigate-circle-outline" color="light"></ion-icon>
+        </ion-text>
+      </ion-col>
+      <ion-col size="3.5">
+        <ion-button fill="clear">
+          <img src="../../../../assets/img/catafindnAMELogo1.png">
+        </ion-button>
+      </ion-col>
+    </ion-row>
+    <!-- <ion-title>{{ title }}</ion-title> -->
+  </ion-toolbar>
+</ion-header>
+
+<super-tabs (tabChange)="onTabChange($event)">
+  <super-tabs-toolbar slot="top" color="primary">
+    <super-tab-button>
+      <ion-icon name="rocket" color="light"></ion-icon>
+      <ion-label>Deals</ion-label>
+    </super-tab-button>
+    <super-tab-button>
+      <ion-icon name="library" color="light"></ion-icon>
+      <ion-label>Categories</ion-label>
+    </super-tab-button>
+    <super-tab-button>
+      <ion-icon name="business" color="light"></ion-icon>
+      <ion-label>Stores</ion-label>
+    </super-tab-button>
+    <super-tab-button>
+      <ion-icon name="tv" color="light"></ion-icon>
+      <ion-label>Ctv</ion-label>
+    </super-tab-button>
+  </super-tabs-toolbar>
+
+  <super-tabs-container>
+    <super-tab>
+      <ion-content>
+        <ion-nav [root]="dealsPage"></ion-nav>
+      </ion-content>
+    </super-tab>
+    <super-tab>
+      <ion-content>
+        <ion-nav [root]="categoriesPage" #categoriesNav></ion-nav>
+      </ion-content>
+    </super-tab>
+    <super-tab>
+      <ion-content>
+        <ion-nav [root]="storesPage"></ion-nav>
+      </ion-content>
+    </super-tab>
+    <super-tab>
+      <ion-content>
+        <ion-nav [root]="ctvPage"></ion-nav>
+      </ion-content>
+    </super-tab>
+  </super-tabs-container>
+
+</super-tabs>
+
+

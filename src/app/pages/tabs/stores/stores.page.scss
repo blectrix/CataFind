@@ -1,0 +1,134 @@
+ion-header {
+    ion-toolbar {
+        position: sticky;
+        --background: transparent;
+        top: 0;
+        width: 100%;
+        border-radius: 0 0 20px 20px;
+        --border: 0;
+    }
+    background: var(--ion-color-light);
+    ion-slides {
+        ion-slide {
+            ion-fab {
+                margin: -11px 0 0 -6px;
+                width: 20px;
+                height: 20px;
+                ion-fab-button {
+                    // --background: #DD2A7B;
+                    width: 20px;
+                    height: 20px;
+                    font-size: 0.7rem;
+                    transform: translateX(-4vh);
+                }
+            }
+            ion-button {
+                height: 3em;
+                border-radius: 25px;
+                box-shadow: -1px 11px 13px -6px rgb(87, 86, 86);
+                ion-text {
+                    font-size: 0.9rem;
+                }
+            }
+            .active-tab:active {
+                ion-text {
+                    font-size: 1.2rem;
+                }
+                transition-timing-function: linear;
+                transition-timing-function: cubic-bezier(0, 0, 1, 1);
+
+                transition-timing-function: ease;
+                transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
+
+                transition-timing-function: ease-in-out;
+                transition-timing-function: cubic-bezier(0.42, 0, 0.58, 1);
+
+                transition-timing-function: ease-in;
+                transition-timing-function: cubic-bezier(0.42, 0, 1, 1);
+
+                transition-timing-function: ease-out;
+                transition-timing-function: cubic-bezier(0, 0, 0.58, 1);
+            }
+        }
+    }
+}
+
+ion-content {
+    --background: var(--ion-color-light);
+    ion-list {
+        background: var(--ion-color-light);
+        padding: 0;
+        margin-bottom: 10vh;
+        ion-item {
+            width: 95%;
+            margin: auto;
+            margin-bottom: 1.5vh;
+            border-radius: 20px;
+            --inner-padding-end: 5px;
+            ion-thumbnail.photo {
+                align-self: flex-start;
+                position: relative;
+                min-width: 2rem;
+                min-height:2rem;
+                border-radius: 20px;
+                padding: 5px;
+                img {
+                    border-radius: 20px;
+                }
+            }
+            ion-thumbnail.photo::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                border-radius: 20px;
+                padding: 3px;
+                background: linear-gradient(to bottom, #4CDBA6, #65A7E6, #8D5ED4, #D668D3, #F49C73, #F6DA70);
+                -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+                -webkit-mask-composite: destination-out; 
+                mask-composite: exclude; 
+            }
+            ion-label {
+                font-weight: bold;
+                font-size: 0.9rem;
+                p {
+                    ion-text {
+                        font-size: 0.75rem;
+                        span {
+                            color: gray;
+                        }
+                    }
+                    .time {
+                        color: lightgray;
+                    }
+                }
+                ion-row {
+                    margin-top: 5px;
+                    ion-icon {
+                        font-size: 1.3rem;
+                    }                    
+                    .like:active {
+                        font-size: 3rem;
+                        transition: all 0.3s ease;
+                    }
+                }
+            }
+            ion-button {
+                height: 2em;
+                --border-radius: 15px;
+                margin-left: 20px;
+            }
+            ion-thumbnail.product {
+                align-self: flex-start;
+                min-width: 4rem;
+                min-height:4rem;
+                border-radius: 20px;
+                img {
+                    border-radius: 20px;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,69 @@
+ion-tabs {
+
+    // --------------Custom Semi Transparent & Rounded Tabs----------------------
+    ion-tab-bar {
+        position: absolute;
+        bottom: 0;
+        width: 100%;        
+        --background: transparent;
+        border-radius: 20px 20px 0 0;
+        --border: 0;
+        ion-tab-button {
+            --background: var(--ion-color-primary);
+            --color: var(--ion-color-light);
+            --color-selected: var(--ion-color-light);
+            ion-icon {
+                font-size: 1.6rem;
+            }
+            ion-label {
+                font-weight: bold;
+                margin-top: 20%;
+            }
+        }
+    }
+    svg {
+        width: 78px;
+        margin-top: 15px;
+        path {
+            fill: var(--ion-color-primary);
+        }
+    }
+
+    ion-tab-button.activity {
+        margin-right: -1px;
+        margin-left: -2px;
+        border-top-right-radius: 20px;
+    }
+    ion-tab-button.chat {
+        margin-left: -1px;
+        margin-right: -2px;
+        border-top-left-radius: 20px;
+    }
+    ion-fab {
+        ion-fab-button {
+            box-shadow: -1px 11px 13px -6px rgb(87, 86, 86);
+            --background: linear-gradient(to bottom, #4CDBA6, #65A7E6, #8D5ED4, #D668D3);
+            // --background: var(--ion-color-primary);
+            margin-bottom: 3vh;
+            border: 1vh solid var(--ion-color-primary);
+            border-radius: 50%;
+            ion-icon {
+                font-size: 2rem;
+                // font-size: 4rem;
+            }
+        }
+        ion-fab-button.grad {
+            border: 1vh solid var(--ion-color-secondary);
+            width: 80px;
+            height: 80px;
+            transform: translateX(-1.3vh) ;
+            
+        }
+    }
+    ion-fab.right-align {
+        margin-left: 13%;
+    }
+    ion-fab.left-align {
+        margin-left: -27%;
+    }
+}

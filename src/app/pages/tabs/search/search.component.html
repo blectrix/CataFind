@@ -1,0 +1,110 @@
+
+<ion-content [color]="searchBar ? 'light' : ''">
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <ion-header>
+    <ion-button fill="clear" expand="full" class="ion-text-center">
+      <div class="drawer-pull" (click)="modalCtrl.dismiss()"></div>
+    </ion-button> 
+  </ion-header>
+  
+  <ion-header #headerwrapper>
+    
+  </ion-header>
+  <!-- collapse="condense" -->
+  <ion-header  #condenseheader>
+  
+    <ion-row class="sticky-row" >
+    
+      <ion-col size="4">
+        <ion-button fill="clear">
+          <ion-icon name="options-outline" slot="icon-only"></ion-icon>
+        </ion-button>
+      </ion-col>
+      <ion-col size="5">
+      <div>
+        <img src="./assets/img/cataLogo100.png">
+      </div>
+    </ion-col>
+      <ion-col size="3">
+        <ion-button (click)="closeInput()" fill="clear">
+          <ion-icon  name="funnel-outline" slot="icon-only"></ion-icon>
+        </ion-button>
+      </ion-col>
+      <!-- <ion-col size="3"  class="ion-text-center">
+        <img src="./assets/img/cataLogo.png">
+      </ion-col> -->
+      <!-- <ion-col size="4">
+        <ion-text color="primary">
+          <span><b>CATAFIND</b></span><br>
+          <span>SEARCH</span>
+        </ion-text>
+      </ion-col> -->
+    </ion-row> 
+  
+      
+  
+  </ion-header>
+
+    <ion-row [class]="searchBar ? '' : 'ion-no-border'">
+      <ion-toolbar>
+        <ion-buttons slot="start" *ngIf="searchBar">
+          <ion-icon slot="icon-only" name="arrow-back-outline" (click)="toggleSearch(1)"></ion-icon>
+        </ion-buttons>
+        <ion-buttons slot="end" *ngIf="searchBar">
+          <ion-button (click)="toggleSearch(1)">
+            <ion-icon slot="icon-only" name="close-circle"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+        <ion-title *ngIf="searchBar" (click)="toggleSearch()">{{query}}</ion-title>
+      <ion-grid class="ion-padding-horizontal" *ngIf="!searchBar">
+        <ion-row class="ion-align-items-center">
+          <ion-icon name="search" size="large"></ion-icon>
+          <ion-input
+            [(ngModel)]="query"
+            (ionChange)="onInputQuery()"
+            type="text"
+            clearInput
+            placeholder="Building equipment, Tools or Plumbing...">
+          </ion-input>
+          <ion-button size="small" shape="round" color="primary" *ngIf="searchBtn" (click)="updateSearch()">SEARCH</ion-button>
+        </ion-row>
+
+
+        <ion-row class="ion-align-items-center ion-margin-top">
+          <ion-col size="12">
+            <ion-label><strong>Top Categories</strong></ion-label>
+          </ion-col>
+          <ion-col size="6" *ngFor="let category of categories" class="ion-text-center">
+            <ion-card
+            (click)="updateSearch(category?.name)"
+            [style.background-image]="'linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(' + category?.image + ')'">
+              <ion-card-header>
+                <ion-card-title color="light">{{category?.name}}</ion-card-title>
+              </ion-card-header>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      </ion-toolbar>
+      
+    </ion-row>
+  
+
+  <ion-list *ngIf="!isLoading && searchBar && searchBar && hardwares?.length > 0">
+    <ion-item-group *ngFor="let hardware of hardwares">
+      <app-hardware [hardware]="hardware"></app-hardware>
+    </ion-item-group>
+  </ion-list>
+
+  <app-empty-screen 
+    [model]="item" 
+    *ngIf="!isLoading && searchBar && hardwares?.length == 0">
+  </app-empty-screen>
+
+  <div align="center" class="transformCenter">
+    <ion-spinner color="primary" *ngIf="searchBar && isLoading"></ion-spinner>
+  </div>
+</ion-content>

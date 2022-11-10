@@ -1,0 +1,70 @@
+<!-- <ion-tabs #tabs (ionTabsDidChange)="setCurrentTab()">
+  <ion-tab-bar slot="bottom">  
+    <ion-tab-button tab="home">
+      <ion-icon [name]="selectedTab == 'home' ? 'storefront' : 'storefront-outline'"></ion-icon>
+    </ion-tab-button>
+    <ion-tab-button tab="cart">
+      <ion-icon [name]="selectedTab == 'cart' ? 'cart' : 'cart-outline'"></ion-icon>
+    </ion-tab-button>
+    <ion-tab-button tab="search">
+      <ion-icon [name]="selectedTab == 'search' ? 'search' : 'search-outline'"></ion-icon>
+    </ion-tab-button>
+    <ion-tab-button tab="list">
+      <ion-icon [name]="selectedTab == 'list' ? 'receipt' : 'receipt-outline'"></ion-icon>
+    </ion-tab-button>
+    <ion-tab-button tab="orders">
+      <ion-icon [name]="selectedTab == 'orders' ? 'bookmarks' : 'bookmarks-outline'"></ion-icon>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs> -->
+
+<ion-tabs #tabs (ionTabsDidChange)="setCurrentTab($event)">
+
+  <!-- -------------------Custom Tabs with fab button------------------------------- -->
+  <ion-fab 
+    *ngIf="selectTab && !isHide"
+    [class]="selectTab == 'chat' ? 'right-align animated' : (selectTab == 'activity' ? 'left-align animated' : 'animated')"
+    vertical="bottom" 
+    [horizontal]="selectTab == 'home' ? 'start' : (selectTab == 'profile' ? 'end' : 'center')" 
+    translucent="true">
+    <ion-fab-button>
+      <ion-icon [name]="getIcon()"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <ion-fab vertical="bottom" horizontal="center" translucent="true">
+    <ion-fab-button class="grad" (click)="searches()">
+      <ion-icon name="search-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button tab="home">
+      <ion-icon *ngIf="selectTab != 'home'" name="storefront-outline"></ion-icon>
+      <ion-icon *ngIf="selectTab == 'home'" name="storefront"></ion-icon>
+    </ion-tab-button>
+    <ion-tab-button tab="activity" class="activity">
+      <ion-icon *ngIf="selectTab != 'activity'" name="bookmarks-outline"></ion-icon>
+      <ion-icon *ngIf="selectTab == 'activity'" name="bookmarks"></ion-icon>
+      <ion-badge color="danger"></ion-badge>
+      <!-- <ion-badge color="danger">1</ion-badge> -->
+    </ion-tab-button>
+    
+    
+    <svg height="50" viewBox="0 0 100 50" width="100" xmlns="http://www.w3.org/2000/svg">
+      <path d="M100 0v50H0V0c.543 27.153 22.72 49 50 49S99.457 27.153 99.99 0h.01z" 
+        fill="red" fill-rule="evenodd">
+      </path>
+    </svg>
+
+    
+    <ion-tab-button tab="chat" class="chat">
+      <ion-icon *ngIf="selectTab != 'chat'" name="chatbubbles-outline"></ion-icon>
+      <ion-icon *ngIf="selectTab == 'chat'" name="chatbubbles"></ion-icon>
+    </ion-tab-button>
+    <ion-tab-button tab="profile" class="profile">
+      <ion-icon *ngIf="selectTab != 'profile'" name="person-outline"></ion-icon>
+      <ion-icon *ngIf="selectTab == 'profile'" name="person"></ion-icon>
+    </ion-tab-button>
+  </ion-tab-bar>
+
+</ion-tabs>

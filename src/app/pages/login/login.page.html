@@ -1,0 +1,42 @@
+<ion-content class="ion-padding" [fullscreen]="true">
+
+  <ion-card style="transform: translateY(37vh)">
+    <!-- <ion-card-header>
+      <ion-card-title style="text-align: center;">Login</ion-card-title>
+    </ion-card-header> -->
+    <ion-card-content>
+      <ion-list>
+
+            <ion-item>
+              <ion-label position="floating">Email</ion-label>
+              <ion-input [(ngModel)]="email" type="text"></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-label position="floating">Password</ion-label>
+              <ion-input [(ngModel)]="password" type="password"></ion-input>
+            </ion-item>
+
+      </ion-list>
+    </ion-card-content>
+
+    <ion-button expand="block" shape="round" color="pr" (click)="login()">Login</ion-button>
+  </ion-card>
+
+  <div  style="padding: 20px; text-align: center; transform: translateY(33.5vh)">
+    <a (click)="forgot()">Forgot Password?</a>
+    <br>
+    <p>Don't have an Account? <a (click)="register()">Register Now!</a> </p>
+  </div>
+
+</ion-content>
+
+<p style="transform: translateY(-5vh); font-size: 2rem;" class="ion-text-center">
+  <ion-text color="primary" style="font-family: Century Gothic; font-size: 1.2rem;"><b>OR</b></ion-text>
+</p>
+<p style="transform: translateY(-10vh)" class="ion-text-center">
+  <ion-icon (click)="phone()" name="call" color="dark"></ion-icon>
+  <!-- <ion-icon name="logo-facebook" style="color: blue;"></ion-icon>
+  <ion-icon name="logo-twitter" color="secondary"></ion-icon> -->
+  <ion-icon (click)="signInWithGoogle()" name="logo-google" color="danger"></ion-icon>
+</p>
